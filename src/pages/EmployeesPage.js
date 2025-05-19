@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { getAllEmployees } from "../api/employeeApi";
 
+const token = localStorage.getItem("jwtToken");
+
+const res = await fetch("http://localhost:8080/employee-service/employees", {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+});
+
+
+
+
 function EmployeesPage() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
